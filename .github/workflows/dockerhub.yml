@@ -16,13 +16,13 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKER_HUB_TOKEN}}
-          password: ${{ secrets.DOCKER_HUB_TOKEN}}
+          username: ${{ secrets.DOCKERHUB_TOKEN}}
+          password: ${{ secrets.DOCKERHUB_TOKEN}}
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_HUB_TOKEN}}/mywebsite:latest .
+          docker build -t ${{ secrets.DOCKERHUB_TOKEN}}/mywebsite:latest .
 
       - name: Push Docker image
         run: |
-          docker push ${{ secrets.DOCKER_HUB_TOKEN}}/mywebsite:latest
+          docker push ${{ secrets.DOCKERHUB_TOKEN}}/mywebsite:latest
