@@ -16,13 +16,13 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: enessermaxhajj
+          username: enessermaxhaj
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Docker Image
         run: |
-          docker build -t enessermaxhajj/dragonball:latest .
+          docker build -t enessermaxhaj/dragonball:latest .
 
       - name: Push Docker Image
         run: |
-          docker push enessermaxhajj/dragonball:latest
+          docker push enessermaxhaj/dragonball:latest
