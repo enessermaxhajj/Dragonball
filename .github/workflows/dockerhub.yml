@@ -10,19 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ enessermaxhajj}}
-          password: ${{ secrets.DOCKERHUB_TOKEN}}
+          username: enessermaxhajj
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build Docker image
+      - name: Build Docker Image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_TOKEN}}/mywebsite:latest .
+          docker build -t enessermaxhajj/dragonball:latest .
 
-      - name: Push Docker image
+      - name: Push Docker Image
         run: |
-          docker push ${{ secrets.DOCKERHUB_TOKEN}}/mywebsite:latest
+          docker push enessermaxhajj/dragonball:latest
