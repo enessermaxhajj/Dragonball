@@ -1,0 +1,43 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dragonball-frontend
+  namespace: dragonball
+  labels:
+    app: dragonball
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dragonball
+  template:
+    metadata:
+      labels:
+        app: dragonball
+    spec:
+      containers:
+      - name: dragonball
+        image: enessermaxhaj/dragonball:latest
+        ports:
+        - containerPort: 80
+        # Health Checks për Self-Healing më të mirë
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+          requests:
+            cpu: "100m"
+            memory: "128Mi"

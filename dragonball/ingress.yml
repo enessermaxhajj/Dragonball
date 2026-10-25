@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dragonball-ingress
+  namespace: dragonball
+spec:
+  ingressClassName: traefik # Kjo është jetike për K3s
+  rules:
+  - host: dragonball.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: dragonball-service
+            port:
+              number: 80
